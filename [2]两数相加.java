@@ -54,7 +54,7 @@
  */
 
 /**
- *
+ * 按位累加，没什么好的方式
  */
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {

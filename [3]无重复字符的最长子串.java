@@ -46,10 +46,28 @@
 // 👍 5689 👎 0
 
 
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * 利用HashMap，时间复杂度O(1)，比较是否重复
+ * 整个方法的时间复杂度为O(n);遍历了整个字符串。
+ */
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int lengthOfLongestSubstring(String s) {
-
+        int ans = 0;
+        Map<Character,Integer> map = new HashMap<>();
+        for (int end = 0,start = 0 ; end < s.length();end++){
+            Character character = s.charAt(end);
+            if(map.containsKey(character)){
+                start = Math.max(map.get(character),start);
+            }
+            ans = Math.max(ans,end - start + 1);
+            map.put(character,end + 1);
+        }
+        return ans;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
